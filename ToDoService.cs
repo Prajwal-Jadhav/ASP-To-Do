@@ -10,25 +10,23 @@ namespace ToDoApp
 {
     public class ToDoService
     {
-        readonly ToDoContext _context;
+        private readonly ToDoContext _context;
 
         public ToDoService(ToDoContext context)
         {
             _context = context;
         }
 
-        public async Task<int> CreateTask(CreateToDoBindingModel input)
+        public async Task CreateTask(CreateToDoBindingModel input)
         {
-            Todo task = new()
+            Todo todo = new()
             {
                 Title = input.Title,
                 IsCompleted = input.IsCompleted
             };
 
-            _context.Add(task);
+            _context.Add(todo);
             await _context.SaveChangesAsync();
-            Console.WriteLine("Successfully saved task.");
-            return task.Id;
         }
     }
 }

@@ -27,8 +27,10 @@ namespace ToDoApp
         {
             services.AddRazorPages();
 
-            var connectionString = Configuration["ConnectionString"];
-            services.AddDbContext<ToDoContext>(options => options.UseNpgsql(connectionString));
+            services.AddHealthChecks();
+
+            //var connectionString = Configuration["ConnectionString"];
+            services.AddDbContext<ToDoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<ToDoService>();
         }
@@ -57,6 +59,7 @@ namespace ToDoApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapHealthChecks("/healthz");
             });
         }
     }

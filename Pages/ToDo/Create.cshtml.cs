@@ -25,13 +25,13 @@ namespace ToDoApp.Pages.ToDo
             Page();
         }
 
-        public IActionResult OnPostAsync()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            Task<int> id =  _service.CreateTask(Input);
+            await _service.CreateTask(Input);
             return RedirectToPage("Index");
         }
 
