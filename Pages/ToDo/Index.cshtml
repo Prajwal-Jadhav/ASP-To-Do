@@ -1,0 +1,13 @@
+﻿@page
+@model ToDoApp.Pages.ToDo.IndexModel
+@{
+    Layout = "_Layout";
+}
+
+<div>
+    @foreach(var task in Model.ToDos)
+     {
+        <h4>@task.Title</h4>
+        <p>Is Completed: @(task.IsCompleted ? "Yes" : "No")</p>
+     }
+</div>

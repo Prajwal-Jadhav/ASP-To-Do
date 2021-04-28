@@ -1,0 +1,21 @@
+﻿@page
+@model ToDoApp.Pages.ToDo.CreateModel
+@{
+    Layout = "_Layout";
+}
+
+<form method="post">
+    <div>
+        <label asp-for="Input.Title">Title</label>
+        <input class="form-control" asp-for="Input.Title" />
+        <span asp-validation-for="Input.Title" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Input.IsCompleted">Is Completed</label>
+        <input asp-for="Input.IsCompleted" />
+        <span asp-validation-for="Input.IsCompleted" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
