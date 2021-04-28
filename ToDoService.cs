@@ -8,18 +8,18 @@ using System.Diagnostics;
 
 namespace ToDoApp
 {
-    public class TaskService
+    public class ToDoService
     {
         readonly ToDoContext _context;
 
-        public TaskService(ToDoContext context)
+        public ToDoService(ToDoContext context)
         {
             _context = context;
         }
 
         public async Task<int> CreateTask(CreateToDoBindingModel input)
         {
-            ToDoApp.Data.Todo task = new()
+            Todo task = new()
             {
                 Title = input.Title,
                 IsCompleted = input.IsCompleted
@@ -27,7 +27,7 @@ namespace ToDoApp
 
             _context.Add(task);
             await _context.SaveChangesAsync();
-            Debug.WriteLine("Successfully saved task.");
+            Console.WriteLine("Successfully saved task.");
             return task.Id;
         }
     }

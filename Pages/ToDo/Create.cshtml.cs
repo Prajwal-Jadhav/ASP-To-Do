@@ -14,8 +14,8 @@ namespace ToDoApp.Pages.ToDo
         [BindProperty]
         public CreateToDoBindingModel Input { get; set; }
 
-        readonly TaskService _service;
-        public CreateModel(TaskService service)
+        readonly ToDoService _service;
+        public CreateModel(ToDoService service)
         {
             _service = service;
         }

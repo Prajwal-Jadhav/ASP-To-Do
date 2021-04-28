@@ -30,7 +30,7 @@ namespace ToDoApp
             var connectionString = Configuration["ConnectionString"];
             services.AddDbContext<ToDoContext>(options => options.UseNpgsql(connectionString));
 
-            services.AddScoped<TaskService>();
+            services.AddScoped<ToDoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
